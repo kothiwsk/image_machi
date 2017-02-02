@@ -1,6 +1,5 @@
 # USAGE
-# python sliding_window.py --image images/adrian_florida.jpg 
-
+# python sliding_window.py --image directory
 # import the necessary packages
 from pyimagesearch.helpers import pyramid
 from pyimagesearch.helpers import sliding_window
