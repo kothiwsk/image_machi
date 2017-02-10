@@ -1,5 +1,3 @@
-# USAGE
-# python sliding_window.py --image directory
 # import the necessary packages
 from pyimagesearch.helpers import pyramid
 from pyimagesearch.helpers import sliding_window
@@ -24,7 +22,7 @@ for (dirpath, dirnames, filenames) in walk(path):
 #print lst
 for each in lst:
 	paths = path + "/" + each
-	print paths
+	#print paths
 	files = [f for f in listdir(paths) if isfile(join(paths,f))]
 #image = numpy.empty(len(files), dtype=object)
 	image = []
