@@ -39,7 +39,7 @@ def create_graph():
 
 path = 'D:/Kaggle/comprtition_sealife_conservation/train'
 #path = "D:\Kaggle\comprtition_sealife_conservation\Code\chandan_directory\image_machi\src\sliding-window"
-#path1 = 'D:/Kaggle/comprtition_sealife_conservation/train/ALB'
+path1 = 'D:/Kaggle/comprtition_sealife_conservation/'
 lst = []
 for (dirpath, dirnames, filenames) in walk(path):
 	lst.extend(dirnames)
@@ -75,26 +75,31 @@ with tf.Session() as sess:
 			# MACHINE LEARNING CLASSIFIER TO CLASSIFY THE CONTENTS OF THE
 			# WINDOW
 			#windows= cv2.imencode(".jpg",window)
-			img_str = cv2.imencode('.jpg', window)[1].tostring()
-			predictions = sess.run(next_to_last_tensor, {"DecodeJpeg/contents:0":img_str})
-			predictions = np.squeeze(predictions)
-			#print(features)
-			#node_lookup = NodeLookup()
+			#cv2.imshow("window", window)
+			#cv2.waitKey(1)
+			number = np.random.uniform(0,1)
+			if(number <= 0.1):
+				cv2.imwrite(path1 + str(x) + "," + str(y) + ".jpg", window)
+			# img_str = cv2.imencode('.jpg', window)[1].tostring()
+			# predictions = sess.run(next_to_last_tensor, {"DecodeJpeg/contents:0":img_str})
+			# predictions = np.squeeze(predictions)
+			# #print(features)
+			# #node_lookup = NodeLookup()
+            #
+			# top_k = predictions.argsort()[-10:][::-1]
+			# #
+			# # print(top_k)
+			# f = open(labelsFullPath, 'rb')
+			# lines = f.readlines()
+			# labels = [str(w).replace("\n", "") for w in lines]
+			# #print(labels)
+			# for node_id in top_k:
+			# 	human_string = labels[node_id]
+			# 	score = predictions[node_id]
+			# 	if (score >= 0.10):
+			# 		print('%s (score = %.5f)' % (human_string, score))
 
-			top_k = predictions.argsort()[-10:][::-1]
-			#
-			# print(top_k)
-			f = open(labelsFullPath, 'rb')
-			lines = f.readlines()
-			labels = [str(w).replace("\n", "") for w in lines]
-			#print(labels)
-			for node_id in top_k:
-				human_string = labels[node_id]
-				score = predictions[node_id]
-				if (score >= 0.10):
-					print('%s (score = %.5f)' % (human_string, score))
 
-			
 		#f = open(labelsFullPath, 'rb')
 		#lines = f.readlines()
 		#print("\n")
